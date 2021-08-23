@@ -177,7 +177,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1334940167515376201}
-  - component: {fileID: 1334940167515376246}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -205,30 +204,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1334940167515376246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1334940167515376200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eec9f03de17857a48ac47c6ae8577551, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  combineParents:
-  - {fileID: 1334940167578176178}
-  - {fileID: 1334940167250475833}
-  - {fileID: 1334940166696906027}
-  - {fileID: 1334940165631711169}
-  - {fileID: 0}
-  - {fileID: 1334940167065261616}
-  useGrid: 0
-  gridCenter: {x: 0, y: 0, z: 0}
-  gridExtents: {x: 10, y: 10, z: 10}
-  gridResolution: {x: 2, y: 2, z: 2}
-  gridPreviewColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1 &1334940167578176178
 GameObject:
   m_ObjectHideFlags: 0
@@ -9057,12 +9032,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: dbba4e34f617e43a695a20cd0f18b5ab, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18f9f64257e02ef41831fe2f867cb118, type: 3}
---- !u!1 &1334940167065261616 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 18f9f64257e02ef41831fe2f867cb118,
-    type: 3}
-  m_PrefabInstance: {fileID: 1334940167065227408}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1334940167065356816 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 18f9f64257e02ef41831fe2f867cb118,

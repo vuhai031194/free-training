@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 7965677358475488295}
   - component: {fileID: 7965677358478388231}
   - component: {fileID: 7965677358477258439}
-  - component: {fileID: 3273244597636326425}
-  - component: {fileID: 6696555205108456591}
   m_Layer: 0
   m_Name: StartFinishLine
   m_TagString: Untagged
@@ -83,38 +81,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3273244597636326425
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7965677358475259911}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 13.615175, y: 7.117058, z: 1.666665}
-  m_Center: {x: 0.015336752, y: 2.9551682, z: -0.0000024437904}
---- !u!114 &6696555205108456591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7965677358475259911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6344976416bcc674d97e5fabc52f3cd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameMode: 2
-  TimeGained: 0
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 8192
-  CollectVFXSpawnPoint: {fileID: 0}
-  CollectSound: {fileID: 0}
-  active: 0
-  finishLap: 1
-  lapOverNextPass: 0

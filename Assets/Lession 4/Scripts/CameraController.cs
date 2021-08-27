@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
 {
     public GameObject car;
 
-    private Vector3 carCameraVector;
+    private Vector3 offsetPosition;
     // Start is called before the first frame update
     private void Start()
     {
@@ -17,6 +17,11 @@ public class CameraController : MonoBehaviour
             car = GameObject.FindGameObjectWithTag("Player");
             //car = GameObject.FindWithTag("Player");
         }
-        carCameraVector = car.transform.position - transform.position;
+        offsetPosition = car.transform.position - transform.position;
+    }
+
+    private void LateUpdate()
+    {
+        transform.position = car.transform.position - offsetPosition;
     }
 }

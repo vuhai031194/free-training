@@ -17,7 +17,10 @@ namespace Lession4
         {
             horizontalInput = Input.GetAxis("Horizontal");
             transform.Translate(Vector3.forward * Time.deltaTime * speed);
-            transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * horizontalInput);
+
+            var angle = Time.deltaTime * turnSpeed * horizontalInput;
+            
+            transform.Rotate(Vector3.up, angle);
         }
     }
 }

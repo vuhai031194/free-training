@@ -1,22 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Lession3
 {
     public class PlayerController : MonoBehaviour
     {
-        public float distancePerSecond;
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
+        [Header("Stats")]
+        [Range(-0.1f, 0.1f)]
+        public float speed;
 
         // Update is called once per frame
         void Update()
         {
-            transform.Translate(0, 0, distancePerSecond * Time.deltaTime);
+            transform.Translate(Vector3.forward * speed);
         }
     }
 }

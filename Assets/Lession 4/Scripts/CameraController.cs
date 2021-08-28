@@ -17,11 +17,13 @@ public class CameraController : MonoBehaviour
             car = GameObject.FindGameObjectWithTag("Player");
             //car = GameObject.FindWithTag("Player");
         }
-        offsetPosition = car.transform.position - transform.position;
+        offsetPosition = transform.position - car.transform.position;
     }
 
     private void LateUpdate()
     {
-        transform.position = car.transform.position - offsetPosition;
+        transform.position = car.transform.position + car.transform.rotation * offsetPosition;
+        
+        transform.LookAt(car.transform);
     }
 }

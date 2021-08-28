@@ -379,7 +379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18e4d4bdeef62d541a9deac3ab240a54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car: {fileID: 0}
+  car: {fileID: 1325001914}
 --- !u!1 &361340019
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,7 +569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  turnSpeed: 20
+  turnSpeed: 30
 --- !u!1001 &1348087507
 PrefabInstance:
   m_ObjectHideFlags: 0

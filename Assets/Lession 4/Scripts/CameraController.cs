@@ -22,6 +22,8 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.position = car.transform.position + offsetPosition;
+        transform.position = car.transform.position + car.transform.rotation * offsetPosition;
+        
+        transform.LookAt(car.transform);
     }
 }

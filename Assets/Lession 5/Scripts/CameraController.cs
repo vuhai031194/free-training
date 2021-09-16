@@ -9,7 +9,7 @@ namespace Lession5
     {
         public GameObject car;
 
-        private Vector3 carCameraVector;
+        private Vector3 offsetPosition;
         // Start is called before the first frame update
         private void Start()
         {
@@ -19,7 +19,14 @@ namespace Lession5
                 car = GameObject.FindGameObjectWithTag("Player");
                 //car = GameObject.FindWithTag("Player");
             }
-            carCameraVector = car.transform.position - transform.position;
+            offsetPosition = transform.position - car.transform.position;
+        }
+
+        private void LateUpdate()
+        {
+            transform.position = car.transform.position + car.transform.rotation * offsetPosition;
+        
+            transform.LookAt(car.transform);
         }
     }
 }

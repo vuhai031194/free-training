@@ -6,21 +6,24 @@ namespace Lession4
 {
     public class PlayerController : MonoBehaviour
     {
+        private Rigidbody rigidbody;
+
         public float speed = 5;
 
         public float turnSpeed = 20;
-        
-        private float horizontalInput;
+
+        private float verticalInput;
+
+        private void Awake()
+        {
+            rigidbody = GetComponent<Rigidbody>();
+        }
 
         // Update is called once per frame
-        void Update()
+        void FixedUpdate()
         {
-            horizontalInput = Input.GetAxis("Horizontal");
-            transform.Translate(Vector3.forward * Time.deltaTime * speed);
-
-            var angle = Time.deltaTime * turnSpeed * horizontalInput;
-            
-            transform.Rotate(Vector3.up, angle);
+            verticalInput = Input.GetAxis("Vertical");
+            rigidbody.AddForce(Vector3.forward * speed * verticalInput * Time.time);
         }
     }
 }

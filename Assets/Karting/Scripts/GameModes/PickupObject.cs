@@ -22,21 +22,6 @@ public class PickupObject : TargetObject
 
     void OnCollect()
     {
-        if (CollectSound)
-        {
-            AudioUtility.CreateSFX(CollectSound, transform.position, AudioUtility.AudioGroups.Pickup, 0f);
-        }
-
-        if (spawnPrefabOnPickup)
-        {
-            var vfx = Instantiate(spawnPrefabOnPickup, CollectVFXSpawnPoint.position, Quaternion.identity);
-            Destroy(vfx, destroySpawnPrefabDelay);
-        }
-               
-        Objective.OnUnregisterPickup(this);
-
-        TimeManager.OnAdjustTime(TimeGained);
-
         Destroy(gameObject, collectDuration);
     }
     

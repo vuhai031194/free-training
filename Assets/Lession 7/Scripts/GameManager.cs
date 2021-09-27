@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private static   GameManager _instance;
-    
+    private static GameManager _instance;
+
     private int _score = 0;
 
     public static GameManager Instance => _instance;
@@ -13,10 +13,10 @@ public class GameManager : MonoBehaviour
         _instance = this;
     }
 
-    public void CollectItem()
+    public void CollectItem(int score)
     {
-        _score++;
-        
-        print("Current Score: " + _score);
+        this._score += score;
+
+        print("Current Score: " + this._score);
     }
 }

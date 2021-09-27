@@ -1,12 +1,14 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Item : MonoBehaviour
 {
+    [SerializeField] private int _score;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.Instance.CollectItem();
+            GameManager.Instance.CollectItem(_score);
             
             Destroy(gameObject);
         }

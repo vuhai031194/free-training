@@ -4,25 +4,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIChapter : MonoBehaviour
+namespace Lession10
 {
-    public Animator animator;
-    public Button hideBtn;
-
-    private void Awake()
+    public class UIChapter : MonoBehaviour
     {
-        hideBtn.onClick.AddListener(OnHideShop);
-    }
+        public Animator animator;
+        public Button hideBtn;
 
-    public void OnHideShop()
-    {
-        animator.Play("out");
-        UIManager.Instance.uiMainAnimator.Play("in");
-    }
+        private void Awake()
+        {
+            hideBtn.onClick.AddListener(OnHideShop);
+        }
 
-    public void HideShopEvent()
-    {
-        UIManager.Instance.player.gameObject.SetActive(true);
-        gameObject.SetActive(false);
+        public void OnHideShop()
+        {
+            animator.Play("out");
+            UIManager.Instance.uiMainAnimator.Play("in");
+        }
+
+        public void HideShopEvent()
+        {
+            UIManager.Instance.player.gameObject.SetActive(true);
+            gameObject.SetActive(false);
+        }
     }
 }

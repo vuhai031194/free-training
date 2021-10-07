@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Lession10;
+using TigerForge;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,7 +26,7 @@ namespace Lession10
 
         public void HideShopEvent()
         {
-            UIManager.Instance.player.SetActive(true);
+            EventManager.EmitEventData(EventName.TRIGGER_PRESENTER, true);
             gameObject.SetActive(false);
         }
     }

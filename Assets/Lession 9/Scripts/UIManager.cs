@@ -1,6 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using TigerForge;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,13 +8,13 @@ namespace Lession10
     public class UIManager : Singleton<UIManager>
     {
         public Animator uiMainAnimator;
+        
         public GameObject uiRewardGameObject;
         public GameObject uiChapter;
-        public GameObject player;
-    
+        
         public Button shopBtn;
         public Button chapterBtn;
-        
+
         private void Awake()
         {
             shopBtn.onClick.AddListener(OnOpenShop);
@@ -24,17 +23,22 @@ namespace Lession10
 
         private void OnOpenShop()
         {
-            player.gameObject.SetActive(false);
+            SetPlayerState(false);
             uiRewardGameObject.SetActive(true);
         }
     
         private void OnOpenChapter()
         {
             uiMainAnimator.Play("out");
-            player.gameObject.SetActive(false);
             uiChapter.SetActive(true);
+            SetPlayerState(false);
         }
-    
+
+        public void SetPlayerState(bool isActive)
+        {
+            EventManager.EmitEventData(EventName.TRIGGER_PRESENTER, isActive);
+        }
+        
     }
 
 }

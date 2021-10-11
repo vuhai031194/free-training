@@ -1,3 +1,4 @@
+using lession10;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -16,7 +17,7 @@ public class GameManager : MonoBehaviour
     public void CollectItem(int score)
     {
         this._score += score;
-
+        DataPlayer.AddCoin(100);
         print("Current Score: " + this._score);
     }
 }

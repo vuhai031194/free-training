@@ -2,83 +2,100 @@ using System;
 using System.Collections;
 using TigerForge;
 using UnityEngine;
-using Random = UnityEngine.Random;
+using UnityEngine.UI;
 
-public class Presenter : MonoBehaviour
+namespace lession10
 {
-    private int playerIndex;
-    private GameObject prefabPlayer;
-    private GameObject player;
-
-    private const string PLAYER_KEY = "KEY";
-    private void Awake()
+    public class Presenter : MonoBehaviour
     {
-        if (PlayerPrefs.HasKey(PLAYER_KEY) == false)
+        private int playerIndex;
+        private GameObject prefabPlayer;
+        private GameObject player;
+
+        private const string PLAYER_KEY = "KEY";
+
+        public Button nextBtn;
+        public Button prevBtn;
+
+        private void Awake()
         {
-            RandomPlayer();
+            playerIndex = DataPlayer.GetCurrentKartId();
+            nextBtn.onClick.AddListener(OnNext);
+            prevBtn.onClick.AddListener(OnPrev);
         }
-        else
+
+        private void OnPrev()
         {
-            playerIndex = PlayerPrefs.GetInt(PLAYER_KEY);
+            playerIndex = DataPlayer.GetPrevKart();
+            Destroy(player);
+
+            StartCoroutine(InitPlayer());
         }
+
+        private void OnNext()
+        {
+            playerIndex = DataPlayer.GetNextKart();
+            Destroy(player);
+
+            StartCoroutine(InitPlayer());
+        }
+
+        private IEnumerator Start()
+        {
+            yield return InitPlayer();
+        }
+
+        private IEnumerator InitPlayer()
+        {
+            var request = Resources.LoadAsync<GameObject>($"{playerIndex}");
+
+            while (!request.isDone)
+            {
+                yield return null;
+            }
+
+            prefabPlayer = (GameObject) request.asset;
+
+            SetPlayer();
+            SetPlayerState(true);
+        }
+
+        private void OnEnable()
+        {
+            EventManager.StartListening(EventName.TRIGGER_PRESENTER, OnTrigger);
+        }
+
+        private void OnDisable()
+        {
+            EventManager.StopListening(EventName.TRIGGER_PRESENTER, OnTrigger);
+        }
+
+        private void OnTrigger()
+        {
+            var isActive = EventManager.GetBool(EventName.TRIGGER_PRESENTER);
+
+            SetPlayerState(isActive);
+        }
+
+        private void SetPlayer()
+        {
+            // if (playerIndex >= playerList.Length)
+            // {
+            //     throw new Exception("Out of list");
+            // }
+            //
+            // player = playerList[playerIndex];
+
+            player = GameObject.Instantiate(prefabPlayer);
+            player.transform.localPosition = new Vector3(0, -2.52f, 26.3f);
+            player.transform.localScale = Vector3.one * 6f;
+
+        }
+
+        public void SetPlayerState(bool isActive)
+        {
+            player.gameObject.SetActive(isActive);
+        }
+
     }
-
-    private IEnumerator Start()
-    {
-
-        var request = Resources.LoadAsync<GameObject>($"Prefabs/player_{playerIndex}");
-
-       while (!request.isDone)
-       {
-           yield return null;
-       }
-
-       prefabPlayer = (GameObject) request.asset;
-       
-       SetPlayer();
-       SetPlayerState(true);
-    }
-
-    private void RandomPlayer()
-    {
-        playerIndex = Random.Range(1, 3);
-        PlayerPrefs.SetInt(PLAYER_KEY, playerIndex);
-    }
-
-    private void OnEnable()
-    {
-        EventManager.StartListening(EventName.TRIGGER_PRESENTER, OnTrigger);
-    }
-
-    private void OnDisable()
-    {
-        EventManager.StopListening(EventName.TRIGGER_PRESENTER, OnTrigger);
-    }
-
-    private void OnTrigger()
-    {
-        var isActive = EventManager.GetBool(EventName.TRIGGER_PRESENTER);
-        
-        SetPlayerState(isActive);
-    }
-
-    private void SetPlayer()
-    {
-        // if (playerIndex >= playerList.Length)
-        // {
-        //     throw new Exception("Out of list");
-        // }
-        //
-        // player = playerList[playerIndex];
-
-        player = GameObject.Instantiate(prefabPlayer, transform);
-        player.transform.localPosition = Vector3.zero;
-
-    }
-    
-    public void SetPlayerState(bool isActive)
-    {
-        player.gameObject.SetActive(isActive);
-    }
-
 }

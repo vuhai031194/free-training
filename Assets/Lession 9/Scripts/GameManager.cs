@@ -1,3 +1,4 @@
+using lession10;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
@@ -31,11 +32,13 @@ namespace Lession9
                 print("Win Game");
                 Invoke(nameof(EndGame), 2);
             }
+            
+            DataPlayer.AddCoin(100);
         }
 
         void EndGame()
         {
-            SceneManager.LoadScene("StartScene");
+            SceneManager.LoadScene("StartLession10");
         }
     }
 

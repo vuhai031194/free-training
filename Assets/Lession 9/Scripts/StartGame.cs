@@ -10,7 +10,8 @@ namespace Lession9
         {
             SceneManager.sceneLoaded += (arg0, mode) =>
             {
-                GameManager.Instance.SetNumberItem();
+                if (GameManager.Instance != null)
+                    GameManager.Instance.SetNumberItem();
             };
         }
 
@@ -20,7 +21,7 @@ namespace Lession9
             SceneManager.LoadScene("EnvironmentScene", LoadSceneMode.Additive);
             SceneManager.LoadScene("Level_1", LoadSceneMode.Additive);
         }
-    
+
         public void LoadScene2()
         {
             SceneManager.LoadScene("Lession 9/Scenes/MainScene");
@@ -28,5 +29,4 @@ namespace Lession9
             SceneManager.LoadScene("Level_2", LoadSceneMode.Additive);
         }
     }
-
 }

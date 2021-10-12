@@ -71,8 +71,8 @@ public class Presenter : MonoBehaviour
         //
         // player = playerList[playerIndex];
 
-        player = GameObject.Instantiate(prefabPlayer, transform);
-        player.transform.localPosition = Vector3.zero;
+        player = GameObject.Instantiate(prefabPlayer);
+        player.transform.localPosition = new Vector3(0, -0.4f, 4.38f);
 
     }
     
